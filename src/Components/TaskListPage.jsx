@@ -4,7 +4,7 @@ import { Card, CardContent, Typography,Box, Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { toggleTaskStatus, deleteTask } from "../redux/tasksSlice";
 
-function TaskListPage() {
+function ListPage() {
   const dispatch = useDispatch();
 
   const tasks = useSelector((state) => state.tasks.tasks);
@@ -93,4 +93,4 @@ function TaskListPage() {
   );
 }
 
-export default TaskListPage;
+export default ListPage;

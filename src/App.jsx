@@ -1,15 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TaskDashboard from "./components/TaskDashboard.jsx";
-import TaskListPage from "./components/TaskListPage.jsx";
+import ListPage from "./components/TaskListPage.jsx";
+import Dashboard from "./components/TaskDashboard.jsx";
+Dashboard
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<TaskDashboard />} />
-        <Route path="/tasks" element={<TaskListPage />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/tasks" element={<ListPage />} />
       </Routes>
     </Router>
   );

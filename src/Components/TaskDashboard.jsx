@@ -6,7 +6,7 @@ import { addTask } from "../redux/tasksSlice.js";
 import { Link } from "react-router-dom";
 import TaskList from "./TaskList.jsx";
 
-function TaskDashboard() {
+function Dashboard() {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.tasks);
   const [filter, setFilter] = useState("all");
@@ -296,4 +296,4 @@ function TaskDashboard() {
   );
 }
 
-export default TaskDashboard;
+export default Dashboard;
