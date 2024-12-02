@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Container,
-  Grid,
-  Typography,
-  Box,
-  Card,
-  CardContent,
-  Paper,
-  TextField,
-  Button,
-} from "@mui/material";
+import { Container, Grid, Typography, Box, Card, CardContent, Paper, TextField, Button } from "@mui/material";
 import TaskList from "../components/TaskList";
 import TaskFilters from "../components/TaskFilters";
 import { addTask } from "../redux/tasksSlice";
+import { Link } from "react-router-dom";  // Import Link for routing
 
 function TaskDashboard() {
   const dispatch = useDispatch();
@@ -29,12 +20,10 @@ function TaskDashboard() {
 
   // Filter tasks based on the selected filter and search input
   const filteredTasks = tasks.filter((task) => {
-    // Apply search query
     const matchesSearch =
       task.title.toLowerCase().includes(search.toLowerCase()) ||
       task.description.toLowerCase().includes(search.toLowerCase());
 
-    // Apply filter condition based on selected filter
     const isCompleted = task.completed;
     const isPending = !task.completed && new Date(task.dueDate) >= new Date();
     const isOverdue = new Date(task.dueDate) < new Date();
@@ -64,7 +53,7 @@ function TaskDashboard() {
   };
 
   return (
-    <div className="w-full h-screen bg-green-900">
+    <div >
       {/* Navbar */}
       <Box
         sx={{
@@ -77,10 +66,16 @@ function TaskDashboard() {
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", color: "#F5A623", textTransform: "uppercase" }}
+          sx={{ fontWeight: "bold", color: "#F1B623", textTransform: "uppercase" }}
         >
           Task Management Dashboard
         </Typography>
+
+        <Box sx={{
+          display: "flex",
+          justifyContent: "space-end",
+          alignItems: "center",
+        }}>
         <Button
           variant="contained"
           color="primary"
@@ -89,6 +84,20 @@ function TaskDashboard() {
         >
           {showForm ? "Close Form" : "Create Task"}
         </Button>
+
+        {/* Link to Task List Page */}
+        <Link to="/tasks">
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "primary",
+              marginLeft:'1rem'
+            }}
+          >
+            Tasks
+          </Button>
+        </Link>
+        </Box>
       </Box>
 
       <Container maxWidth="xl" sx={{ mt: 4 }}>
@@ -276,7 +285,7 @@ function TaskDashboard() {
                     padding: "1.5rem",
                   }}
                 >
-                  <TaskList tasks={filteredTasks} filter={filter}/>
+                  <TaskList tasks={filteredTasks} filter={filter} />
                 </Paper>
               </Grid>
             </Grid>

@@ -56,23 +56,22 @@ function TaskList({ tasks, filter }) {
     handleClose();
   };
 
-  // Handle delete task confirmation
+
   const handleDeleteConfirm = () => {
     dispatch(deleteTask(taskToDelete.id));
     setShowDeleteConfirmation(false);
   };
 
-  // Filter tasks based on the selected filter
+
   const filteredTasks = tasks.filter((task) => {
     if (filter === "completed") return task.completed;
     if (filter === "pending") return !task.completed && new Date(task.dueDate) >= new Date();
     if (filter === "overdue") return new Date(task.dueDate) < new Date();
-    return true; // For "all", return all tasks
+    return true; 
   });
 
   return (
     <div>
-      {/* Task Title (Updated based on filter) */}
       <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: "1rem", textAlign: "start" }}>
         {filter === "completed"
           ? "Completed Tasks"
@@ -83,7 +82,7 @@ function TaskList({ tasks, filter }) {
           : "All Tasks"}
       </Typography>
 
-      {/* Render each task */}
+
       {filteredTasks.map((task) => (
         <Card
           key={task.id}
@@ -95,26 +94,23 @@ function TaskList({ tasks, filter }) {
           }}
         >
           <CardContent>
-            {/* Title */}
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
               {task.title}
             </Typography>
             <Typography>{task.description}</Typography>
           </CardContent>
 
-          {/* Bottom of the Card: Due Date and Icons */}
+
           <Grid container justifyContent="space-between" sx={{ padding: "8px" }}>
-            {/* Due Date: Left Bottom */}
             <Grid item sx={{ flexGrow: 1 }}>
               <Typography color="textSecondary" variant="body2">
                 Due: {task.dueDate}
               </Typography>
             </Grid>
 
-            {/* Action Icons: Right Bottom */}
+
             <Grid item>
               <Grid container spacing={1}>
-                {/* Toggle Task Status */}
                 <Grid item>
                   <Box display="flex" alignItems="center">
                     <IconButton
