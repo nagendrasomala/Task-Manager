@@ -18,7 +18,6 @@ function Dashboard() {
     dueDate: "",
   });
 
-  // Filter tasks based on the selected filter and search input
   const filteredTasks = tasks.filter((task) => {
     const matchesSearch =
       task.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -54,50 +53,63 @@ function Dashboard() {
 
   return (
     <div >
-      {/* Navbar */}
       <Box
         sx={{
           padding: "1rem 2rem",
           backgroundColor: "#26263D",
           display: "flex",
-          justifyContent: "space-between",
+          flexDirection: { xs: "column", sm: "row" }, 
+          justifyContent: { xs: "center", sm: "space-between" }, 
           alignItems: "center",
+          gap: "1rem", 
         }}
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", color: "#F1B623", textTransform: "uppercase" }}
+          sx={{
+            fontWeight: "bold",
+            color: "#F1B623",
+            textTransform: "uppercase",
+            textAlign: { xs: "center", sm: "left" }, 
+          }}
         >
           Task Management Dashboard
         </Typography>
 
-        <Box sx={{
-          display: "flex",
-          justifyContent: "space-end",
-          alignItems: "center",
-        }}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleToggleForm}
-          aria-label="Toggle Task Creation Form"
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row",md:"row" }, 
+            justifyContent: { xs: "center", sm: "flex-end" }, 
+            alignItems: "center",
+            gap: "1rem",
+            marginTop: { xs: "1rem", sm: 0 }, 
+          }}
         >
-          {showForm ? "Close Form" : "Create Task"}
-        </Button>
-
-        {/* Link to Task List Page */}
-        <Link to="/tasks">
           <Button
             variant="contained"
-            sx={{
-              backgroundColor: "primary",
-              marginLeft:'1rem'
-            }}
+            color="primary"
+            onClick={handleToggleForm}
+            aria-label="Toggle Task Creation Form"
+            sx={{ width: { xs: "100%", sm: "auto" } }}
           >
-            Tasks
+            {showForm ? "Close Form" : "Create Task"}
           </Button>
-        </Link>
+
+          <Link to="/tasks" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "primary",
+                width: { xs: "100%", sm: "auto" },
+              }}
+            >
+              Tasks
+            </Button>
+          </Link>
         </Box>
+
+
       </Box>
 
       <Container maxWidth="xl" sx={{ mt: 4 }}>
@@ -153,9 +165,9 @@ function Dashboard() {
                   sx={{
                     marginTop: "1.5rem",
                     padding: "1rem",
-                    backgroundColor: "#FFFFFF", // Changed to white
+                    backgroundColor: "#FFFFFF", 
                     borderRadius: "8px",
-                    color: "#000", // Make sure text is black for better readability
+                    color: "#000", 
                   }}
                 >
                   <Typography
