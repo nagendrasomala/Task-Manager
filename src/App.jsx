@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ListPage from "./components/TaskListPage.jsx";
-import Dashboard from "./components/TaskDashboard.jsx";
-Dashboard
+import Dashboard from './Components/TaskDashboard.jsx';
+import ListPage from "./Components/TaskListPage.jsx";
+
 
 
 function App() {
