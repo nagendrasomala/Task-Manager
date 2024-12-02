@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TaskDashboard from "./pages/TaskDashboard";
-import TaskListPage from "./pages/TaskListPage";
+import TaskDashboard from "./components/TaskDashboard";
+import TaskListPage from "./components/TaskListPage";
 
 function App() {
   return (

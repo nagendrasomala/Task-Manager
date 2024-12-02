@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Grid, Typography, Box, Card, CardContent, Paper, TextField, Button } from "@mui/material";
-import TaskFilters from "../components/TaskFilters.jsx";
-import { addTask } from "../redux/tasksSlice";
+import TaskFilters from "./TaskFilters.jsx";
+import { addTask } from "../redux/tasksSlice.js";
 import { Link } from "react-router-dom";
-import TaskList from "../components/TaskList.jsx";
+import TaskList from "./TaskList.jsx";
 
 function TaskDashboard() {
   const dispatch = useDispatch();
